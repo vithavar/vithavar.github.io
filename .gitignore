@@ -1,0 +1,6 @@
+# node.js
+node_modules
+uploads
+db
+*-lock.json
+*.lock
