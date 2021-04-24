@@ -3,7 +3,7 @@ import ActiveLink from '../Link';
 import { MenuItems } from './MenuItems';
 import styles from './NavBar.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faReact } from '@fortawesome/free-brands-svg-icons'
+import { faVuejs } from '@fortawesome/free-brands-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -34,7 +34,7 @@ function NavBar() {
   // render() {
   return(
     <nav className={navbar ? "navbar navbar--active" : "navbar"}>
-      <h1 className='navbar-logo'>Vithusan</h1>
+      <h1 className='navbar-logo'><FontAwesomeIcon icon={faVuejs} height="30px"></FontAwesomeIcon></h1>
       <div className='menu-icon' onClick={handleClick}>
         <FontAwesomeIcon icon={click ? faTimes : faBars} color="azure" height="30px"></FontAwesomeIcon>
       </div>

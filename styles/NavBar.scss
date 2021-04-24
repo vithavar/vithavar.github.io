@@ -11,17 +11,19 @@
     z-index: 999;
 
     &--active {
+        opacity: 60%;
         background: linear-gradient(90deg, rgb(30, 95, 150) 0%, rgba(5, 178, 220, 1) 100%);
     }
 }
 
 .navbar-logo {
     color: azure;
-    justify-self: start;;
+    justify-self: start;
     margin-left: 0px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    font-size: 12px;
 }
 
 .nav-menu {
@@ -113,9 +115,10 @@
 
     .navbar-logo {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 6.25px;
+        left: 51px;
         transform: translate(25%, 50%);
+        font-size:12px;
     }
     
     .menu-icon {

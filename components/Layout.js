@@ -1,4 +1,4 @@
-import Header from "./Header";
+import About from "./About/About";
 import NavBar from "./Navbar/NavBar";
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
@@ -19,6 +19,7 @@ const contentStyle = {
 const Layout = props => (
   <div className="Layout" style={layoutStyle}>
     <NavBar />
+    <About />
     <div className="Content" style={contentStyle}>
       {props.children}
     </div>

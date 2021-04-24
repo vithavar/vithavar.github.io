@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.scss'
-import Layout from '../../components/Layout'
+import Navbar from '../../components/Navbar/NavBar'
 
 export default function Gallery() {
   return (
-    <Layout>
+    <body>
+      <Navbar />
       <div className={styles.container}>
         <Head>
           <title>Gallery</title>
@@ -16,6 +17,6 @@ export default function Gallery() {
           </h1>
         </main>
       </div>
-    </Layout>
+    </body>
   )
 }
