@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import ActiveLink from '../Link';
 import { MenuItems } from './MenuItems';
 import styles from './NavBar.module.css'
@@ -8,34 +8,51 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
-class NavBar extends Component {
-  state = { clicked: false }
 
-  handleClick = ()  => {
-    this.setState({ clicked: !this.state.clicked })
+
+function NavBar() {
+  const [click, setClick] = useState(false);
+  const [navbar, setNavbar] = useState(false);
+
+  const handleClick = ()  => {
+    setClick(!click);
+    // setNavbar(!navbar);
   }
-  render() {
-    return(
-      <nav className="NavbarItems">
-        <h1 className='navbar-logo'>Vithusan</h1>
-        <div className='menu-icon' onClick={this.handleClick}>
-          <FontAwesomeIcon icon={this.state.clicked ? faTimes : faBars} color="azure" height="30px"></FontAwesomeIcon>
-        </div>
-        <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-          {MenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <a className={item.cName} href={item.url}>
-                  {item.title}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
-    )
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    }
+    else {
+      setNavbar(false);
+    }
   }
+  useEffect(() => {
+    window.addEventListener('scroll', changeBackground)
+  })
+
+  // render() {
+  return(
+    <nav className={navbar ? "navbar navbar--active" : "navbar"}>
+      <h1 className='navbar-logo'>Vithusan</h1>
+      <div className='menu-icon' onClick={handleClick}>
+        <FontAwesomeIcon icon={click ? faTimes : faBars} color="azure" height="30px"></FontAwesomeIcon>
+      </div>
+      <ul className={click ? 'nav-menu nav-menu--active' : 'nav-menu'}>
+        {MenuItems.map((item, index) => {
+          return (
+            <li key={index}>
+              <a className={item.cName} href={item.url}>
+                {item.title}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </nav>
+  )
 }
+// }
 
 
 // const navBarStyle = {
