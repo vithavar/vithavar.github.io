@@ -1,6 +1,4 @@
-import Home from "./Home/Home";
 import NavBar from "./Navbar/NavBar";
-import About from "./About/About";
 // CSS issue with font awesome
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
@@ -18,15 +16,13 @@ const contentStyle = {
   flexDirection: "column"
 };
 
-const Layout = props => (
+const GalleryLayout = props => (
   <div className="Layout" style={layoutStyle}>
     <NavBar />
-    <Home />
-    <About />
     <div className="Content" style={contentStyle}>
       {props.children}
     </div>
   </div>
 );
 
-export default Layout;
+export default GalleryLayout;

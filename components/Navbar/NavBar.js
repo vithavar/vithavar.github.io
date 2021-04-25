@@ -1,13 +1,13 @@
 import React, { Component, useEffect, useState } from 'react';
-import ActiveLink from '../Link';
+import { Link } from 'react-scroll';
 import { MenuItems } from './MenuItems';
 import styles from './NavBar.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVuejs } from '@fortawesome/free-brands-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
+// import { config } from '@fortawesome/fontawesome-svg-core';
+// config.autoAddCss = false;
 
 
 function NavBar() {
@@ -33,21 +33,23 @@ function NavBar() {
 
   // render() {
   return(
-    <nav className={navbar ? "navbar navbar--active" : "navbar"}>
+    <nav id='navbarH' className={navbar ? "navbar navbar--active" : "navbar"}>
       <h1 className='navbar-logo'><FontAwesomeIcon icon={faVuejs} height="30px"></FontAwesomeIcon></h1>
       <div className='menu-icon' onClick={handleClick}>
         <FontAwesomeIcon icon={click ? faTimes : faBars} color="azure" height="30px"></FontAwesomeIcon>
       </div>
       <ul className={click ? 'nav-menu nav-menu--active' : 'nav-menu'}>
+
         {MenuItems.map((item, index) => {
           return (
             <li key={index}>
-              <a className={item.cName} href={item.url}>
+              <Link to={item.title == 'Home' ? 'Layout' : item.title} spy={true} className={item.cName} href={item.url}>
                 {item.title}
-              </a>
+              </Link>
             </li>
           )
         })}
+        {/* <a className='nav-links' href={'/gallery'}>Gallery</a> */}
       </ul>
     </nav>
   )
